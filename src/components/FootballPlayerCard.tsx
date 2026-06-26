@@ -1,5 +1,6 @@
-// import { useState } from "react";
-import type { PlayerData } from "./types";
+import { useState } from "react";
+import type { PlayerData } from "./data";
+import { getPlayerTier } from "./data";
 import PlayerCard from "./PlayerCard";
 
 const defaultPlayer: PlayerData = {
@@ -18,10 +19,31 @@ const defaultPlayer: PlayerData = {
 };
 
 const FootballPlayerCard = () => {
+  const [player, setPlayer] = useState<PlayerData>(defaultPlayer);
+
   return (
-    <>
-      <PlayerCard player={defaultPlayer} />
-    </>
+    <div className="page">
+      <header className="header">
+        <div className="header-inner">
+          <p className="header-title">Football Card Builder</p>
+          <p className="header-subtitle">Customize your player card</p>
+        </div>
+      </header>
+      <main className="main">
+        <div className="layout">
+          <div className="form-panel"></div>
+          <div className="preview-panel">
+            <p className="preview-label">Live Preview</p>
+            <p className="preview-hint">Updates as you type</p>
+            <div
+              className={`preview-box tier-${getPlayerTier(player.overallRating)}`}
+            >
+              <PlayerCard player={player} />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 };
 

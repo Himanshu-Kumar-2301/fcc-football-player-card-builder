@@ -1,11 +1,5 @@
-import type { PlayerData } from "./types";
-
-const getPlayerTier = (rating: number): string => {
-  if (rating >= 92) return "elite";
-  if (rating >= 85) return "gold";
-  if (rating >= 75) return "silver";
-  return "bronze";
-};
+import type { PlayerData } from "./data";
+import { getPlayerTier } from "./data";
 
 const PlayerCard = ({ player }: { player: PlayerData }) => {
   return (

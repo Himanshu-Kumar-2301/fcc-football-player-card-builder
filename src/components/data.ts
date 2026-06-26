@@ -11,3 +11,10 @@ export interface PlayerData {
   def: number;
   phy: number;
 }
+
+export const getPlayerTier = (rating: number): string => {
+  if (rating >= 92) return "elite";
+  if (rating >= 85) return "gold";
+  if (rating >= 75) return "silver";
+  return "bronze";
+};
